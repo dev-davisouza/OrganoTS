@@ -1,0 +1,12 @@
+:root {
+    --blue: #6278F7;
+}
+
+.banner {
+    background-color: var(--blue);
+    text-align: center;
+}
+
+.banner img {
+    max-width: 100%;
+}
