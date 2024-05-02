@@ -1,10 +1,12 @@
 import './TextInput.css'
 
-const TextInput = () => {
+const TextInput = (props) => {
     return (
         <div className="text-input">
-            <label htmlFor="">Name</label>
-            <input type="text" placeholder='Type your name'/>
+            <label>
+                {props.label}
+            </label>
+            <input required={props.required} placeholder={props.placeholder} />
         </div>
     )
 }

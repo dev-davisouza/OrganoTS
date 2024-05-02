@@ -1,14 +1,14 @@
-.text-input {
+.dropdown {
     margin: 24px 0;
 }
 
-.text-input label {
+.dropdown label {
     display: block;
     margin-bottom: 8px;
     font-size: 24px;
 }
 
-.text-input input {
+.dropdown select {
     background-color: white;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
     width: 100%;
