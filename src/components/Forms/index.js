@@ -2,8 +2,14 @@ import './Forms.css'
 import TextInput from '../TextInput';
 import Dropdown from '../Dropdown';
 import Button from '../Button';
+import { useState } from 'react';
 
 const Form = () => {
+
+    const [name, setName] = useState('')
+    const [role, setRole] = useState('')
+    const [image, setImg] = useState('')
+    const [team, setTeam] = useState('')
 
     const teams = [
         'Programming',
@@ -16,17 +22,43 @@ const Form = () => {
 
     const onSave = (event) => {
         event.preventDefault()
-        console.log('Form was submmited')
+        console.log('Form was submmited', name, role, image, team)
     }
 
     return (
         <section className='form'>
             <form onSubmit={onSave}>
                 <h2>Fill in the fields to create the employee card.</h2>
-                <TextInput required={true} label="Name" placeholder="Type your name"/>
-                <TextInput required={true} label="Role" placeholder="Type your role"/>
-                <TextInput label="Image" placeholder="Type the URL image"/>
-                <Dropdown label="Team" items={teams}/>
+                <TextInput 
+                    required={true} 
+                    label="Name" 
+                    placeholder="Type your name"
+                    value={name}
+                    Changed={value => setName(value)}
+                />
+
+                <TextInput 
+                    required={true} 
+                    label="Role" 
+                    placeholder="Type your role"
+                    value={role}
+                    Changed={value => setRole(value)}
+                />
+
+                <TextInput 
+                    label="Image" 
+                    placeholder="Type the URL image"
+                    value={image}
+                    Changed={value => setImg(value)}
+                />
+
+                <Dropdown 
+                    label="Team" 
+                    items={teams}
+                    value={team}
+                    Changed={value => setTeam(value)}
+                />
+
                 <Button type="submit">
                     Create card
                 </Button>

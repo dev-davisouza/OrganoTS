@@ -4,7 +4,7 @@ const Dropdown = (props) => {
     return (
         <div className='dropdown'>
             <label>{props.label}</label>
-            <select>
+            <select onChange={event => props.Changed(event.target.value)} value={props.value}>
                 {props.items.map(item => {
                     return <option key={item}>{item}</option>
                 })}
