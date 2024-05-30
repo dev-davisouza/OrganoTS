@@ -1,19 +1,21 @@
-import './TextInput.css'
+import "./TextInput.css";
 
-const TextInput = (props) => {
+const TextInput = ({ Changed, label, value, required, placeholder }) => {
+  const onTyped = (event) => {
+    Changed(event.target.value);
+  };
 
-    const onTyped = (event) => {
-        props.Changed(event.target.value)
-    }
+  return (
+    <div className="text-input">
+      <label>{label}</label>
+      <input
+        value={value}
+        onChange={onTyped}
+        required={required}
+        placeholder={placeholder}
+      />
+    </div>
+  );
+};
 
-    return (
-        <div className="text-input">
-            <label>
-                {props.label}
-            </label>
-            <input value={props.value} onChange={onTyped} required={props.required} placeholder={props.placeholder} />
-        </div>
-    )
-}
-
-export default TextInput
+export default TextInput;

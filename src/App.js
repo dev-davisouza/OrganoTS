@@ -1,14 +1,21 @@
-import Banner from './components/Banner';
-import Form from './components/Forms';
+import { useState } from "react";
+import Banner from "./components/Banner";
+import Form from "./components/Forms";
 
 function App() {
+  const [employees, setEmployees] = useState([]);
+
+  const onNewEmployeeAdded = (employee) => {
+    setEmployees([...employees, employee]);
+    console.log(employees);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <Banner/>
+        <Banner />
       </header>
-      <Form/>
-
+      <Form onEmployeeRegistered={(employee) => onNewEmployeeAdded(employee)} />
     </div>
   );
 }
