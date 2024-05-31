@@ -1,9 +1,9 @@
 import "./Employee.css";
 
-export default function Employee({ image, name, role }) {
+export default function Employee({ image, name, role, bgColor }) {
   return (
     <div className="employee">
-      <header>
+      <header style={{ backgroundColor: bgColor }}>
         <img src={image} alt="Employee" />
       </header>
       <footer>

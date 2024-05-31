@@ -12,6 +12,7 @@ const Team = ({ teamName, primaryColor, secondColor, employees }) => {
             name={employee.name}
             image={employee.image}
             role={employee.role}
+            bgColor={primaryColor}
           />
         ))}
       </div>
