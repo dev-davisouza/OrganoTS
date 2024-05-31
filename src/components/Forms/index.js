@@ -4,26 +4,23 @@ import Dropdown from "../Dropdown";
 import Button from "../Button";
 import { useState } from "react";
 
-const Form = ({ onEmployeeRegistered }) => {
+const Form = ({ onEmployeeRegistered, dropItems }) => {
   // Set the states of the Inputs form
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [image, setImg] = useState("");
   const [team, setTeam] = useState("");
 
-  const teams = [
-    "Programming",
-    "Front-End",
-    "Data Science",
-    "Devops",
-    "UX & Desing",
-    "Mobile",
-  ];
-
   const onSave = (event) => {
     event.preventDefault();
     console.log("Form was submmited", name, role, image, team);
     onEmployeeRegistered({ name, role, image, team });
+
+    // Clearing the form after submit
+    setName("");
+    setRole("");
+    setImg("");
+    setTeam("");
   };
 
   return (
@@ -60,7 +57,7 @@ const Form = ({ onEmployeeRegistered }) => {
         {/* Team Selectfield */}
         <Dropdown
           label="Team"
-          items={teams}
+          items={dropItems}
           value={team}
           Changed={(value) => setTeam(value)}
         />
