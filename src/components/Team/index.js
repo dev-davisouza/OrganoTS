@@ -8,6 +8,7 @@ const Team = ({ teamName, primaryColor, secondColor, employees }) => {
       <div className="employees">
         {employees.map((employee) => (
           <Employee
+            key={employee.name}
             name={employee.name}
             image={employee.image}
             role={employee.role}
