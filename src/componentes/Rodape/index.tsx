@@ -1,33 +1,36 @@
-import "./Footer.css";
+import React from "react";
+import "./rodape.css";
 
-export default function Footer() {
+const Rodape = () => {
   return (
     <footer className="footer">
       <section>
         <ul>
           <li>
             <a href="facebook.com" target="_blank">
-              <img src="/img/fb.png" alt="" />
+              <img src="/imagens/facebook.png" alt="" />
             </a>
           </li>
           <li>
             <a href="twitter.com" target="_blank">
-              <img src="/img/tw.png" alt="" />
+              <img src="/imagens/twitter.png" alt="" />
             </a>
           </li>
           <li>
             <a href="instagram.com" target="_blank">
-              <img src="/img/ig.png" alt="" />
+              <img src="/imagens/instagram.png" alt="" />
             </a>
           </li>
         </ul>
       </section>
       <section>
-        <img src="/img/logo.png" alt="" />
+        <img src="/imagens/logo.png" alt="" />
       </section>
       <section>
-        <p>Developed by Me with Alura.</p>
+        <p>Desenvolvido por Alura.</p>
       </section>
     </footer>
   );
-}
+};
+
+export default Rodape;
