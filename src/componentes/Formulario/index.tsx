@@ -3,13 +3,14 @@ import Botao from "../Botao";
 import Campo from "../Campo";
 import ListaSuspensa from "../ListaSuspensa";
 import "./formulario.css";
+import { v4 as uuidv4 } from "uuid";
+
 import { IColaborador } from "../../compartilhado/interfaces/IColaborador";
-import { ITime } from "../../compartilhado/interfaces/ITimes";
 
 interface FormularioProps {
   aoCadastrar: (colaborador: IColaborador) => void;
   times: string[];
-  aoCriarTime: (time: ITime) => void;
+  aoCriarTime: (nome: string, cor: string) => void;
 }
 
 const Formulario = ({ aoCadastrar, times, aoCriarTime }: FormularioProps) => {
@@ -18,10 +19,9 @@ const Formulario = ({ aoCadastrar, times, aoCriarTime }: FormularioProps) => {
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
   const [time, setTime] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [data, setDate] = useState("");
+  const [data, setDate] = useState(new Date(currentDate).toLocaleDateString());
   const [nomeTime, setNomeTime] = useState("");
-  const [corTime, setCorTime] = useState("");
+  const [corTime, setCorTime] = useState("#000000");
 
   const aoSubmeter = (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault();
@@ -32,7 +32,12 @@ const Formulario = ({ aoCadastrar, times, aoCriarTime }: FormularioProps) => {
       imagem,
       time,
       data,
+      favorito: false,
+      id: uuidv4(),
     });
+    setNome("");
+    setCargo("");
+    setImagem("");
   };
 
   return (
@@ -55,6 +60,7 @@ const Formulario = ({ aoCadastrar, times, aoCriarTime }: FormularioProps) => {
         />
         <Campo
           label="Imagem"
+          valor={imagem}
           placeholder="Informe o endereço da imagem "
           aoAlterado={(valor) => setImagem(valor)}
         />
@@ -74,11 +80,13 @@ const Formulario = ({ aoCadastrar, times, aoCriarTime }: FormularioProps) => {
         />
         <Botao>Criar card</Botao>
       </form>
+
       <form
         className="formulario"
         onSubmit={(evento) => {
           evento.preventDefault();
-          aoCriarTime({ nome: nomeTime, cor: corTime });
+          aoCriarTime(nomeTime, corTime);
+          setNomeTime("");
         }}
       >
         <h2>Preencha os dados para criar um novo time.</h2>
@@ -93,7 +101,6 @@ const Formulario = ({ aoCadastrar, times, aoCriarTime }: FormularioProps) => {
           obrigatorio={true}
           label="Cor"
           type="color"
-          placeholder="Digite sua cor"
           valor={corTime}
           aoAlterado={(valor) => setCorTime(valor)}
         />
